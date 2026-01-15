@@ -38,6 +38,7 @@ dataset/
 ```
 Где все координаты **нормированы** в диапазон 0..1 относительно размеров изображения.
 
+ codex-83qcvd
 ## 4) YAML: можно авто-сгенерировать
 Если файла YAML нет, скрипт может сам его создать по `--dataset-dir` и `--names`:
 ```bash
@@ -50,6 +51,19 @@ python scripts/train_yolo.py \
 ```
 
 ## 5) Обучение (если YAML уже есть)
+=======
+Пример YAML:
+```yaml
+# data/rust_players.yaml
+path: /path/to/dataset
+train: images/train
+val: images/val
+names:
+  0: player
+```
+
+## 4) Обучение
+ main
 ```bash
 python scripts/train_yolo.py --data data/rust_players.yaml --epochs 100 --img 960
 ```
@@ -59,7 +73,11 @@ python scripts/train_yolo.py --data data/rust_players.yaml --epochs 100 --img 96
 runs/detect/train/weights/best.pt
 ```
 
+ codex-83qcvd
 ## 6) Live-детект экрана (красные рамки)
+=======
+## 5) Live-детект экрана (красные рамки)
+ main
 ```bash
 python scripts/live_detect.py --model runs/detect/train/weights/best.pt --classes player
 ```
