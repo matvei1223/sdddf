@@ -38,22 +38,7 @@ dataset/
 ```
 Где все координаты **нормированы** в диапазон 0..1 относительно размеров изображения.
 
-### Куда класть скриншоты
-Ваши скриншоты (например, как на примере с игроком) кладите в:
-- `dataset/images/train/` — основная часть для обучения.
-- `dataset/images/val/` — небольшая часть для проверки (например, 10–20%).
-
-После этого для **каждой** картинки нужно создать файл разметки в:
-- `dataset/labels/train/` или `dataset/labels/val/` с тем же именем, но `.txt`.
-
-Пример:
-```
-dataset/images/train/rust_0001.png
-dataset/labels/train/rust_0001.txt
-```
-
-Если картинка лежит в `images/train`, то её txt должен лежать в `labels/train`.
-
+ codex-83qcvd
 ## 4) YAML: можно авто-сгенерировать
 Если файла YAML нет, скрипт может сам его создать по `--dataset-dir` и `--names`:
 ```bash
@@ -66,6 +51,18 @@ python scripts/train_yolo.py \
 ```
 
 ## 5) Обучение (если YAML уже есть)
+Пример YAML:
+```yaml
+# data/rust_players.yaml
+path: /path/to/dataset
+train: images/train
+val: images/val
+names:
+  0: player
+```
+
+## 4) Обучение
+ main
 ```bash
 python scripts/train_yolo.py --data data/rust_players.yaml --epochs 100 --img 960
 ```
@@ -75,7 +72,10 @@ python scripts/train_yolo.py --data data/rust_players.yaml --epochs 100 --img 96
 runs/detect/train/weights/best.pt
 ```
 
+ codex-83qcvd
 ## 6) Live-детект экрана (красные рамки)
+## 5) Live-детект экрана (красные рамки)
+ main
 ```bash
 python scripts/live_detect.py --model runs/detect/train/weights/best.pt --classes player
 ```
