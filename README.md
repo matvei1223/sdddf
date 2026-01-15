@@ -51,7 +51,6 @@ python scripts/train_yolo.py \
 ```
 
 ## 5) Обучение (если YAML уже есть)
-=======
 Пример YAML:
 ```yaml
 # data/rust_players.yaml
@@ -75,7 +74,6 @@ runs/detect/train/weights/best.pt
 
  codex-83qcvd
 ## 6) Live-детект экрана (красные рамки)
-=======
 ## 5) Live-детект экрана (красные рамки)
  main
 ```bash

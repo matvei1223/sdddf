@@ -8,7 +8,6 @@ Usage:
 import argparse
  codex-83qcvd
 from pathlib import Path
-=======
  main
 
 from ultralytics import YOLO
@@ -26,7 +25,6 @@ def main() -> None:
         "--names",
         help="Comma-separated class names to auto-generate YAML (e.g. player,enemy)",
     )
-=======
  main
     parser.add_argument("--epochs", type=int, default=80, help="Training epochs")
     parser.add_argument("--img", type=int, default=960, help="Image size")
@@ -60,7 +58,6 @@ def main() -> None:
 
     model = YOLO(args.model)
     model.train(data=str(data_path), epochs=args.epochs, imgsz=args.img)
-=======
     model = YOLO(args.model)
     model.train(data=args.data, epochs=args.epochs, imgsz=args.img)
  main
