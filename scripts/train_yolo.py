@@ -6,7 +6,9 @@ Usage:
 """
 
 import argparse
+ codex-83qcvd
 from pathlib import Path
+ main
 
 from ultralytics import YOLO
 
@@ -14,6 +16,7 @@ from ultralytics import YOLO
 def main() -> None:
     parser = argparse.ArgumentParser(description="Train a YOLOv8 model")
     parser.add_argument("--data", required=True, help="Path to dataset YAML")
+ codex-83qcvd
     parser.add_argument(
         "--dataset-dir",
         help="Dataset root dir (used to auto-generate YAML if --data does not exist)",
@@ -22,6 +25,7 @@ def main() -> None:
         "--names",
         help="Comma-separated class names to auto-generate YAML (e.g. player,enemy)",
     )
+ main
     parser.add_argument("--epochs", type=int, default=80, help="Training epochs")
     parser.add_argument("--img", type=int, default=960, help="Image size")
     parser.add_argument(
@@ -31,6 +35,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+ codex-83qcvd
     data_path = Path(args.data)
     if not data_path.exists():
         if not args.dataset_dir or not args.names:
@@ -53,6 +58,9 @@ def main() -> None:
 
     model = YOLO(args.model)
     model.train(data=str(data_path), epochs=args.epochs, imgsz=args.img)
+    model = YOLO(args.model)
+    model.train(data=args.data, epochs=args.epochs, imgsz=args.img)
+ main
 
 
 if __name__ == "__main__":
